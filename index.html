@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Urna Eletrônica - Bolão de Ciência Política</title>
+  <title>ZiegBET - Bolão de Ciência Política</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Fontes Oficiais/Retro -->
@@ -24,24 +24,30 @@
       background-color: #0d1710;
       color: #34d399;
     }
+    /* Melhoria de Contraste para UI/UX */
+    label, .field-label, .text-contrast {
+      color: #e2e8f0 !important;
+    }
   </style>
 </head>
 <body class="bg-zinc-950 text-zinc-100 font-sans-ui min-h-screen py-6 px-2 sm:px-4 flex justify-center items-center">
 
-  <!-- Carcaça Externa da Urna (Cinza Oficial) -->
+  <!-- Carcaça Externa da Urna -->
   <div class="w-full max-w-4xl bg-zinc-300 border-4 border-zinc-400 rounded-3xl p-3 sm:p-8 shadow-2xl text-zinc-900">
     
-    <!-- Moldura Superior da Urna -->
+    <!-- Moldura Superior da Urna (ZiegBET) -->
     <div class="flex items-center justify-between border-b-2 border-zinc-400 pb-4 mb-4">
       <div class="flex items-center gap-3 sm:gap-4">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/b/bf/Coat_of_arms_of_Brazil.svg" alt="Brasão do Brasil" class="w-10 sm:w-14 h-auto drop-shadow">
+        <div class="bg-emerald-600 text-black font-extrabold text-2xl sm:text-3xl px-3 py-1 rounded-xl shadow border border-emerald-400 font-urna">
+          🎲
+        </div>
         <div>
-          <h1 class="text-lg sm:text-2xl font-black uppercase tracking-widest text-zinc-800">Justiça Eleitoral</h1>
-          <p class="text-xs sm:text-sm font-bold text-zinc-600 uppercase tracking-wide">Bolão de Ciência Política</p>
+          <h1 class="text-xl sm:text-3xl font-black uppercase tracking-widest text-emerald-800">ZiegBET</h1>
+          <p class="text-xs sm:text-sm font-bold text-zinc-700 uppercase tracking-wide">Bolão de Ciência Política</p>
         </div>
       </div>
       <div class="hidden sm:block text-right">
-        <span class="bg-zinc-800 text-zinc-100 font-urna text-xs px-3 py-1.5 rounded border border-zinc-700 tracking-widest">
+        <span class="bg-zinc-800 text-emerald-400 font-urna text-xs px-3 py-1.5 rounded border border-zinc-700 tracking-widest">
           SESSÃO: 2026
         </span>
       </div>
@@ -52,10 +58,10 @@
       <button id="btnAbaVotar" onclick="alternarAba('votar')" class="bg-zinc-800 text-emerald-400 py-2 px-3 rounded-lg border border-zinc-700 font-bold hover:bg-zinc-700 transition">
         🗳️ VOTAR
       </button>
-      <button id="btnAbaRanking" onclick="alternarAba('ranking')" class="bg-zinc-800/60 text-zinc-400 py-2 px-3 rounded-lg border border-zinc-700 font-bold hover:bg-zinc-700 transition">
+      <button id="btnAbaRanking" onclick="alternarAba('ranking')" class="bg-zinc-800/60 text-zinc-300 py-2 px-3 rounded-lg border border-zinc-700 font-bold hover:bg-zinc-700 transition">
         📊 RANKING
       </button>
-      <button id="btnAbaApuracao" onclick="alternarAba('apuracao')" class="bg-zinc-800/60 text-zinc-400 py-2 px-3 rounded-lg border border-zinc-700 font-bold hover:bg-zinc-700 transition">
+      <button id="btnAbaApuracao" onclick="alternarAba('apuracao')" class="bg-zinc-800/60 text-zinc-300 py-2 px-3 rounded-lg border border-zinc-700 font-bold hover:bg-zinc-700 transition">
         📈 APURAÇÃO
       </button>
       <button id="btnAbaAdmin" onclick="alternarAba('admin')" class="bg-zinc-800/60 text-amber-400 py-2 px-3 rounded-lg border border-zinc-700 font-bold hover:bg-zinc-700 transition">
@@ -71,13 +77,13 @@
         <form id="urnaForm" onsubmit="event.preventDefault();" class="space-y-8">
           
           <div class="border-b border-emerald-900/80 pb-4 text-center sm:text-left">
-            <p class="text-xs text-emerald-600 uppercase tracking-widest mb-1">SEU VOTO VAI PARA</p>
-            <h2 class="text-xl sm:text-2xl font-bold text-white tracking-wider">PALPITES DE CIÊNCIA POLÍTICA</h2>
+            <p class="text-xs text-emerald-400 uppercase tracking-widest mb-1 font-semibold">SEU VOTO VAI PARA</p>
+            <h2 class="text-xl sm:text-2xl font-bold text-white tracking-wider">PALPITES DE CIÊNCIA POLÍTICA - ZiegBET</h2>
           </div>
 
           <!-- 0. Identificação do Eleitor -->
           <section class="bg-emerald-950/30 p-4 rounded-xl border border-emerald-800/50">
-            <label class="block text-xs uppercase tracking-wider text-emerald-500 mb-1">NOME DO ELEITOR / PARTICIPANTE *</label>
+            <label class="block text-xs uppercase tracking-wider text-slate-200 mb-1 font-bold">NOME DO ELEITOR / PARTICIPANTE *</label>
             <input type="text" name="nome_participante" required placeholder="DIGITE SEU NOME COMPLETO" class="w-full bg-black/80 border border-emerald-700 rounded p-3 text-white placeholder-emerald-800 focus:outline-none focus:border-emerald-400 font-urna tracking-widest text-sm uppercase">
           </section>
 
@@ -88,30 +94,66 @@
               <h3 class="text-base sm:text-lg font-bold text-emerald-300 uppercase tracking-wider">1. PRESIDENTE DA REPÚBLICA</h3>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div class="bg-black/40 p-3 rounded border border-emerald-900">
-                <label class="block text-xs text-emerald-500 mb-2">HAVERÁ 2º TURNO? *</label>
-                <div class="flex gap-4">
-                  <label class="flex items-center gap-2 cursor-pointer text-white text-sm">
-                    <input type="radio" name="pres_2turno" value="Sim" required class="accent-emerald-500"> SIM
-                  </label>
-                  <label class="flex items-center gap-2 cursor-pointer text-white text-sm">
-                    <input type="radio" name="pres_2turno" value="Não" class="accent-emerald-500"> NÃO
-                  </label>
-                </div>
+            <div class="bg-black/40 p-3 rounded border border-emerald-900">
+              <label class="block text-xs text-slate-200 mb-2 font-bold">HAVERÁ 2º TURNO? *</label>
+              <div class="flex gap-6">
+                <label class="flex items-center gap-2 cursor-pointer text-white text-sm">
+                  <input type="radio" name="pres_2turno" value="Sim" required onchange="toggle2TurnoPres(true)" class="accent-emerald-500"> SIM
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer text-white text-sm">
+                  <input type="radio" name="pres_2turno" value="Não" onchange="toggle2TurnoPres(false)" class="accent-emerald-500"> NÃO
+                </label>
+              </div>
+            </div>
+
+            <!-- Campos dinâmicos do 2º turno Presidencial -->
+            <div id="boxFinalistasPres" class="hidden grid grid-cols-1 sm:grid-cols-2 gap-4 bg-emerald-950/20 p-4 rounded-xl border border-emerald-800/40">
+              <div>
+                <label class="block text-xs text-amber-400 mb-1 font-bold">FINALISTA 1 DO 2º TURNO *</label>
+                <select id="pres_finalista1" name="pres_finalista1" class="w-full bg-black border border-emerald-800 rounded p-2 text-white text-xs font-urna focus:border-emerald-400 outline-none uppercase">
+                  <option value="">SELECIONE O 1º FINALISTA</option>
+                  <option value="Luiz Inácio Lula da Silva (PT)">Luiz Inácio Lula da Silva (PT)</option>
+                  <option value="Clariana Barão (DC)">Clariana Barão (DC)</option>
+                  <option value="Edmilson Costa (PCB)">Edmilson Costa (PCB)</option>
+                  <option value="Escritor Augusto Cury (Avante)">Escritor Augusto Cury (Avante)</option>
+                  <option value="Flávio Bolsonaro (PL)">Flávio Bolsonaro (PL)</option>
+                  <option value="Hertz Dias (PSTU)">Hertz Dias (PSTU)</option>
+                  <option value="Leonardo Avalanche (PRTB)">Leonardo Avalanche (PRTB)</option>
+                  <option value="Renan Santos (Missão)">Renan Santos (Missão)</option>
+                  <option value="Ronaldo Caiado (PSD)">Ronaldo Caiado (PSD)</option>
+                  <option value="Rui Costa Pimenta (PCO)">Rui Costa Pimenta (PCO)</option>
+                  <option value="Samara Martins (UP)">Samara Martins (UP)</option>
+                  <option value="Veterinário Wilson Grassi (Democrata)">Veterinário Wilson Grassi (Democrata)</option>
+                  <option value="Zema (Novo)">Zema (Novo)</option>
+                </select>
               </div>
 
-              <div class="bg-black/40 p-3 rounded border border-emerald-900">
-                <label class="block text-xs text-emerald-500 mb-1">FINALISTAS DO 2º TURNO (SE HOUVER)</label>
-                <input type="text" name="pres_finalistas" placeholder="EX: LULA vs FLÁVIO" class="w-full bg-black border border-emerald-800 rounded p-2 text-white text-xs font-urna focus:border-emerald-400 outline-none uppercase">
+              <div>
+                <label class="block text-xs text-amber-400 mb-1 font-bold">FINALISTA 2 DO 2º TURNO *</label>
+                <select id="pres_finalista2" name="pres_finalista2" class="w-full bg-black border border-emerald-800 rounded p-2 text-white text-xs font-urna focus:border-emerald-400 outline-none uppercase">
+                  <option value="">SELECIONE O 2º FINALISTA</option>
+                  <option value="Luiz Inácio Lula da Silva (PT)">Luiz Inácio Lula da Silva (PT)</option>
+                  <option value="Clariana Barão (DC)">Clariana Barão (DC)</option>
+                  <option value="Edmilson Costa (PCB)">Edmilson Costa (PCB)</option>
+                  <option value="Escritor Augusto Cury (Avante)">Escritor Augusto Cury (Avante)</option>
+                  <option value="Flávio Bolsonaro (PL)">Flávio Bolsonaro (PL)</option>
+                  <option value="Hertz Dias (PSTU)">Hertz Dias (PSTU)</option>
+                  <option value="Leonardo Avalanche (PRTB)">Leonardo Avalanche (PRTB)</option>
+                  <option value="Renan Santos (Missão)">Renan Santos (Missão)</option>
+                  <option value="Ronaldo Caiado (PSD)">Ronaldo Caiado (PSD)</option>
+                  <option value="Rui Costa Pimenta (PCO)">Rui Costa Pimenta (PCO)</option>
+                  <option value="Samara Martins (UP)">Samara Martins (UP)</option>
+                  <option value="Veterinário Wilson Grassi (Democrata)">Veterinário Wilson Grassi (Democrata)</option>
+                  <option value="Zema (Novo)">Zema (Novo)</option>
+                </select>
               </div>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div class="bg-black/40 p-3 rounded border border-emerald-900">
-                <label class="block text-xs text-emerald-500 mb-1">PRESIDENTE ELEITO (VENCEDOR) *</label>
+                <label id="lblPresVencedor" class="block text-xs text-slate-200 mb-1 font-bold">PRESIDENTE ELEITO (VENCEDOR) *</label>
                 <select name="pres_vencedor" required class="w-full bg-black border border-emerald-800 rounded p-2 text-white text-xs font-urna focus:border-emerald-400 outline-none uppercase">
-                  <option value="">SELECIONE O CANDIDATO</option>
+                  <option value="">SELECIONE O CANDIDATO VENCEDOR</option>
                   <option value="Luiz Inácio Lula da Silva (PT)">Luiz Inácio Lula da Silva (PT)</option>
                   <option value="Clariana Barão (DC)">Clariana Barão (DC)</option>
                   <option value="Edmilson Costa (PCB)">Edmilson Costa (PCB)</option>
@@ -129,7 +171,7 @@
               </div>
 
               <div class="bg-black/40 p-3 rounded border border-emerald-900">
-                <label class="block text-xs text-emerald-500 mb-1">% VOTOS VÁLIDOS VENCEDOR (DESEMPATE) *</label>
+                <label class="block text-xs text-slate-200 mb-1 font-bold">% VOTOS VÁLIDOS VENCEDOR (DESEMPATE) *</label>
                 <input type="text" name="pres_pct" required placeholder="EX: 52.3%" class="w-full bg-black border border-emerald-800 rounded p-2 text-white text-xs font-urna focus:border-emerald-400 outline-none">
               </div>
             </div>
@@ -150,8 +192,18 @@
                   <span class="text-xs font-bold text-white">SÃO PAULO (SP)</span>
                   <img src="https://upload.wikimedia.org/wikipedia/commons/2/2b/Bandeira_do_estado_de_S%C3%A3o_Paulo.svg" alt="SP" class="w-6 h-4 rounded">
                 </div>
-                <select name="gov_sp" required class="w-full bg-black border border-emerald-800 rounded p-2 text-xs text-white outline-none focus:border-emerald-400">
-                  <option value="">SELECIONE O CANDIDATO (SP)</option>
+                <label class="block text-[11px] text-slate-300 font-bold mb-1">HAVERÁ 2º TURNO EM SP?</label>
+                <select name="gov_sp_2turno" onchange="toggleGov2Turno('sp', this.value)" class="w-full bg-black border border-emerald-800 rounded p-1.5 text-xs text-emerald-400 outline-none font-bold">
+                  <option value="Sim">SIM (COM 2º TURNO)</option>
+                  <option value="Não">NÃO (1º TURNO DIRETO)</option>
+                </select>
+                <div id="boxGovSp2Turno" class="space-y-2 pt-1">
+                  <input type="text" name="gov_sp_f1" placeholder="FINALISTA 1 (SP)" class="w-full bg-black border border-emerald-800 rounded p-1.5 text-xs text-white uppercase placeholder-emerald-800">
+                  <input type="text" name="gov_sp_f2" placeholder="FINALISTA 2 (SP)" class="w-full bg-black border border-emerald-800 rounded p-1.5 text-xs text-white uppercase placeholder-emerald-800">
+                </div>
+                <label class="block text-[11px] text-slate-300 font-bold mt-2 mb-1">GOVERNADOR ELEITO (VENCEDOR)</label>
+                <select name="gov_sp" required class="w-full bg-black border border-emerald-800 rounded p-2 text-xs text-white outline-none focus:border-emerald-400 uppercase">
+                  <option value="">SELECIONE O VENCEDOR (SP)</option>
                   <option value="Carlos Machado (PCB)">Carlos Machado (PCB)</option>
                   <option value="Fernando Haddad (PT)">Fernando Haddad (PT)</option>
                   <option value="Izadora Dias (PCO)">Izadora Dias (PCO)</option>
@@ -159,10 +211,6 @@
                   <option value="Tarcísio de Freitas (Republicanos)">Tarcísio de Freitas (Republicanos)</option>
                   <option value="Vera Lúcia (PSTU)">Vera Lúcia (PSTU)</option>
                   <option value="Vivian Mendes (UP)">Vivian Mendes (UP)</option>
-                </select>
-                <select name="gov_sp_2turno" class="w-full bg-black border border-emerald-800 rounded p-1.5 text-xs text-emerald-400 outline-none">
-                  <option value="Com 2º Turno">COM 2º TURNO</option>
-                  <option value="1º Turno Direto">1º TURNO DIRETO</option>
                 </select>
               </div>
 
@@ -172,8 +220,18 @@
                   <span class="text-xs font-bold text-white">PARANÁ (PR)</span>
                   <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Bandeira_do_Paran%C3%A1.svg" alt="PR" class="w-6 h-4 rounded">
                 </div>
-                <select name="gov_pr" required class="w-full bg-black border border-emerald-800 rounded p-2 text-xs text-white outline-none focus:border-emerald-400">
-                  <option value="">SELECIONE O CANDIDATO (PR)</option>
+                <label class="block text-[11px] text-slate-300 font-bold mb-1">HAVERÁ 2º TURNO EM PR?</label>
+                <select name="gov_pr_2turno" onchange="toggleGov2Turno('pr', this.value)" class="w-full bg-black border border-emerald-800 rounded p-1.5 text-xs text-emerald-400 outline-none font-bold">
+                  <option value="Sim">SIM (COM 2º TURNO)</option>
+                  <option value="Não">NÃO (1º TURNO DIRETO)</option>
+                </select>
+                <div id="boxGovPr2Turno" class="space-y-2 pt-1">
+                  <input type="text" name="gov_pr_f1" placeholder="FINALISTA 1 (PR)" class="w-full bg-black border border-emerald-800 rounded p-1.5 text-xs text-white uppercase placeholder-emerald-800">
+                  <input type="text" name="gov_pr_f2" placeholder="FINALISTA 2 (PR)" class="w-full bg-black border border-emerald-800 rounded p-1.5 text-xs text-white uppercase placeholder-emerald-800">
+                </div>
+                <label class="block text-[11px] text-slate-300 font-bold mt-2 mb-1">GOVERNADOR ELEITO (VENCEDOR)</label>
+                <select name="gov_pr" required class="w-full bg-black border border-emerald-800 rounded p-2 text-xs text-white outline-none focus:border-emerald-400 uppercase">
+                  <option value="">SELECIONE O VENCEDOR (PR)</option>
                   <option value="Adriano Funileiro (PCO)">Adriano Funileiro (PCO)</option>
                   <option value="Alexandre Salomão (Mobiliza)">Alexandre Salomão (Mobiliza)</option>
                   <option value="Luiz França (Missão)">Luiz França (Missão)</option>
@@ -183,10 +241,6 @@
                   <option value="Sergio Moro (PL)">Sergio Moro (PL)</option>
                   <option value="Tayná Miessa (UP)">Tayná Miessa (UP)</option>
                 </select>
-                <select name="gov_pr_2turno" class="w-full bg-black border border-emerald-800 rounded p-1.5 text-xs text-emerald-400 outline-none">
-                  <option value="Com 2º Turno">COM 2º TURNO</option>
-                  <option value="1º Turno Direto">1º TURNO DIRETO</option>
-                </select>
               </div>
 
               <!-- SC -->
@@ -195,8 +249,18 @@
                   <span class="text-xs font-bold text-white">SANTA CATARINA (SC)</span>
                   <img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Bandeira_de_Santa_Catarina.svg" alt="SC" class="w-6 h-4 rounded">
                 </div>
-                <select name="gov_sc" required class="w-full bg-black border border-emerald-800 rounded p-2 text-xs text-white outline-none focus:border-emerald-400">
-                  <option value="">SELECIONE O CANDIDATO (SC)</option>
+                <label class="block text-[11px] text-slate-300 font-bold mb-1">HAVERÁ 2º TURNO EM SC?</label>
+                <select name="gov_sc_2turno" onchange="toggleGov2Turno('sc', this.value)" class="w-full bg-black border border-emerald-800 rounded p-1.5 text-xs text-emerald-400 outline-none font-bold">
+                  <option value="Sim">SIM (COM 2º TURNO)</option>
+                  <option value="Não">NÃO (1º TURNO DIRETO)</option>
+                </select>
+                <div id="boxGovSc2Turno" class="space-y-2 pt-1">
+                  <input type="text" name="gov_sc_f1" placeholder="FINALISTA 1 (SC)" class="w-full bg-black border border-emerald-800 rounded p-1.5 text-xs text-white uppercase placeholder-emerald-800">
+                  <input type="text" name="gov_sc_f2" placeholder="FINALISTA 2 (SC)" class="w-full bg-black border border-emerald-800 rounded p-1.5 text-xs text-white uppercase placeholder-emerald-800">
+                </div>
+                <label class="block text-[11px] text-slate-300 font-bold mt-2 mb-1">GOVERNADOR ELEITO (VENCEDOR)</label>
+                <select name="gov_sc" required class="w-full bg-black border border-emerald-800 rounded p-2 text-xs text-white outline-none focus:border-emerald-400 uppercase">
+                  <option value="">SELECIONE O VENCEDOR (SC)</option>
                   <option value="Bruno Pedreiro do PCO (PCO)">Bruno Pedreiro do PCO (PCO)</option>
                   <option value="Gelson Merísio (PSB)">Gelson Merísio (PSB)</option>
                   <option value="João Rodrigues (PSD)">João Rodrigues (PSD)</option>
@@ -206,10 +270,6 @@
                   <option value="Professor Marcus Sodré (PSTU)">Professor Marcus Sodré (PSTU)</option>
                   <option value="Ralf Zimmer (PRD)">Ralf Zimmer (PRD)</option>
                 </select>
-                <select name="gov_sc_2turno" class="w-full bg-black border border-emerald-800 rounded p-1.5 text-xs text-emerald-400 outline-none">
-                  <option value="Com 2º Turno">COM 2º TURNO</option>
-                  <option value="1º Turno Direto">1º TURNO DIRETO</option>
-                </select>
               </div>
 
               <!-- RS -->
@@ -218,8 +278,18 @@
                   <span class="text-xs font-bold text-white">RIO GRANDE DO SUL (RS)</span>
                   <img src="https://upload.wikimedia.org/wikipedia/commons/6/63/Bandeira_do_Rio_Grande_do_Sul.svg" alt="RS" class="w-6 h-4 rounded">
                 </div>
-                <select name="gov_rs" required class="w-full bg-black border border-emerald-800 rounded p-2 text-xs text-white outline-none focus:border-emerald-400">
-                  <option value="">SELECIONE O CANDIDATO (RS)</option>
+                <label class="block text-[11px] text-slate-300 font-bold mb-1">HAVERÁ 2º TURNO EM RS?</label>
+                <select name="gov_rs_2turno" onchange="toggleGov2Turno('rs', this.value)" class="w-full bg-black border border-emerald-800 rounded p-1.5 text-xs text-emerald-400 outline-none font-bold">
+                  <option value="Sim">SIM (COM 2º TURNO)</option>
+                  <option value="Não">NÃO (1º TURNO DIRETO)</option>
+                </select>
+                <div id="boxGovRs2Turno" class="space-y-2 pt-1">
+                  <input type="text" name="gov_rs_f1" placeholder="FINALISTA 1 (RS)" class="w-full bg-black border border-emerald-800 rounded p-1.5 text-xs text-white uppercase placeholder-emerald-800">
+                  <input type="text" name="gov_rs_f2" placeholder="FINALISTA 2 (RS)" class="w-full bg-black border border-emerald-800 rounded p-1.5 text-xs text-white uppercase placeholder-emerald-800">
+                </div>
+                <label class="block text-[11px] text-slate-300 font-bold mt-2 mb-1">GOVERNADOR ELEITO (VENCEDOR)</label>
+                <select name="gov_rs" required class="w-full bg-black border border-emerald-800 rounded p-2 text-xs text-white outline-none focus:border-emerald-400 uppercase">
+                  <option value="">SELECIONE O VENCEDOR (RS)</option>
                   <option value="Luciano Zucco (PL)">Luciano Zucco (PL)</option>
                   <option value="Juliana Brizola (PDT)">Juliana Brizola (PDT)</option>
                   <option value="Gabriel Souza (MDB)">Gabriel Souza (MDB)</option>
@@ -227,10 +297,6 @@
                   <option value="Priscila Voigt (UP)">Priscila Voigt (UP)</option>
                   <option value="Cesar Pontes (PCO)">Cesar Pontes (PCO)</option>
                   <option value="Rejane de Oliveira (PSTU)">Rejane de Oliveira (PSTU)</option>
-                </select>
-                <select name="gov_rs_2turno" class="w-full bg-black border border-emerald-800 rounded p-1.5 text-xs text-emerald-400 outline-none">
-                  <option value="Com 2º Turno">COM 2º TURNO</option>
-                  <option value="1º Turno Direto">1º TURNO DIRETO</option>
                 </select>
               </div>
 
@@ -240,8 +306,18 @@
                   <span class="text-xs font-bold text-white">RIO DE JANEIRO (RJ)</span>
                   <img src="https://upload.wikimedia.org/wikipedia/commons/7/73/Bandeira_do_estado_do_Rio_de_Janeiro.svg" alt="RJ" class="w-6 h-4 rounded">
                 </div>
-                <select name="gov_rj" required class="w-full bg-black border border-emerald-800 rounded p-2 text-xs text-white outline-none focus:border-emerald-400">
-                  <option value="">SELECIONE O CANDIDATO (RJ)</option>
+                <label class="block text-[11px] text-slate-300 font-bold mb-1">HAVERÁ 2º TURNO EM RJ?</label>
+                <select name="gov_rj_2turno" onchange="toggleGov2Turno('rj', this.value)" class="w-full bg-black border border-emerald-800 rounded p-1.5 text-xs text-emerald-400 outline-none font-bold">
+                  <option value="Sim">SIM (COM 2º TURNO)</option>
+                  <option value="Não">NÃO (1º TURNO DIRETO)</option>
+                </select>
+                <div id="boxGovRj2Turno" class="space-y-2 pt-1">
+                  <input type="text" name="gov_rj_f1" placeholder="FINALISTA 1 (RJ)" class="w-full bg-black border border-emerald-800 rounded p-1.5 text-xs text-white uppercase placeholder-emerald-800">
+                  <input type="text" name="gov_rj_f2" placeholder="FINALISTA 2 (RJ)" class="w-full bg-black border border-emerald-800 rounded p-1.5 text-xs text-white uppercase placeholder-emerald-800">
+                </div>
+                <label class="block text-[11px] text-slate-300 font-bold mt-2 mb-1">GOVERNADOR ELEITO (VENCEDOR)</label>
+                <select name="gov_rj" required class="w-full bg-black border border-emerald-800 rounded p-2 text-xs text-white outline-none focus:border-emerald-400 uppercase">
+                  <option value="">SELECIONE O VENCEDOR (RJ)</option>
                   <option value="André Marinho (NOVO)">André Marinho (NOVO)</option>
                   <option value="Coronel Busnello (MISSÃO)">Coronel Busnello (MISSÃO)</option>
                   <option value="Cyro Garcia (PSTU)">Cyro Garcia (PSTU)</option>
@@ -252,10 +328,6 @@
                   <option value="Luan Monteiro (PCO)">Luan Monteiro (PCO)</option>
                   <option value="William Siri (PSOL)">William Siri (PSOL)</option>
                 </select>
-                <select name="gov_rj_2turno" class="w-full bg-black border border-emerald-800 rounded p-1.5 text-xs text-emerald-400 outline-none">
-                  <option value="Com 2º Turno">COM 2º TURNO</option>
-                  <option value="1º Turno Direto">1º TURNO DIRETO</option>
-                </select>
               </div>
 
               <!-- MG -->
@@ -264,8 +336,18 @@
                   <span class="text-xs font-bold text-white">MINAS GERAIS (MG)</span>
                   <img src="https://upload.wikimedia.org/wikipedia/commons/f/f4/Bandeira_de_Minas_Gerais.svg" alt="MG" class="w-6 h-4 rounded">
                 </div>
-                <select name="gov_mg" required class="w-full bg-black border border-emerald-800 rounded p-2 text-xs text-white outline-none focus:border-emerald-400">
-                  <option value="">SELECIONE O CANDIDATO (MG)</option>
+                <label class="block text-[11px] text-slate-300 font-bold mb-1">HAVERÁ 2º TURNO EM MG?</label>
+                <select name="gov_mg_2turno" onchange="toggleGov2Turno('mg', this.value)" class="w-full bg-black border border-emerald-800 rounded p-1.5 text-xs text-emerald-400 outline-none font-bold">
+                  <option value="Sim">SIM (COM 2º TURNO)</option>
+                  <option value="Não">NÃO (1º TURNO DIRETO)</option>
+                </select>
+                <div id="boxGovMg2Turno" class="space-y-2 pt-1">
+                  <input type="text" name="gov_mg_f1" placeholder="FINALISTA 1 (MG)" class="w-full bg-black border border-emerald-800 rounded p-1.5 text-xs text-white uppercase placeholder-emerald-800">
+                  <input type="text" name="gov_mg_f2" placeholder="FINALISTA 2 (MG)" class="w-full bg-black border border-emerald-800 rounded p-1.5 text-xs text-white uppercase placeholder-emerald-800">
+                </div>
+                <label class="block text-[11px] text-slate-300 font-bold mt-2 mb-1">GOVERNADOR ELEITO (VENCEDOR)</label>
+                <select name="gov_mg" required class="w-full bg-black border border-emerald-800 rounded p-2 text-xs text-white outline-none focus:border-emerald-400 uppercase">
+                  <option value="">SELECIONE O VENCEDOR (MG)</option>
                   <option value="Alexandre Kalil (PDT)">Alexandre Kalil (PDT)</option>
                   <option value="Ben Mendes (Missão)">Ben Mendes (Missão)</option>
                   <option value="Cleitinho Azevedo (Republicanos)">Cleitinho Azevedo (Republicanos)</option>
@@ -278,10 +360,6 @@
                   <option value="Rafael Duda (PSTU)">Rafael Duda (PSTU)</option>
                   <option value="Túlio Lopes (PCB)">Túlio Lopes (PCB)</option>
                 </select>
-                <select name="gov_mg_2turno" class="w-full bg-black border border-emerald-800 rounded p-1.5 text-xs text-emerald-400 outline-none">
-                  <option value="Com 2º Turno">COM 2º TURNO</option>
-                  <option value="1º Turno Direto">1º TURNO DIRETO</option>
-                </select>
               </div>
 
               <!-- ES -->
@@ -290,17 +368,23 @@
                   <span class="text-xs font-bold text-white">ESPÍRITO SANTO (ES)</span>
                   <img src="https://upload.wikimedia.org/wikipedia/commons/4/43/Bandeira_do_Esp%C3%ADrito_Santo.svg" alt="ES" class="w-6 h-4 rounded">
                 </div>
-                <select name="gov_es" required class="w-full bg-black border border-emerald-800 rounded p-2 text-xs text-white outline-none focus:border-emerald-400">
-                  <option value="">SELECIONE O CANDIDATO (ES)</option>
+                <label class="block text-[11px] text-slate-300 font-bold mb-1">HAVERÁ 2º TURNO EM ES?</label>
+                <select name="gov_es_2turno" onchange="toggleGov2Turno('es', this.value)" class="w-full bg-black border border-emerald-800 rounded p-1.5 text-xs text-emerald-400 outline-none font-bold">
+                  <option value="Sim">SIM (COM 2º TURNO)</option>
+                  <option value="Não">NÃO (1º TURNO DIRETO)</option>
+                </select>
+                <div id="boxGovEs2Turno" class="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
+                  <input type="text" name="gov_es_f1" placeholder="FINALISTA 1 (ES)" class="w-full bg-black border border-emerald-800 rounded p-1.5 text-xs text-white uppercase placeholder-emerald-800">
+                  <input type="text" name="gov_es_f2" placeholder="FINALISTA 2 (ES)" class="w-full bg-black border border-emerald-800 rounded p-1.5 text-xs text-white uppercase placeholder-emerald-800">
+                </div>
+                <label class="block text-[11px] text-slate-300 font-bold mt-2 mb-1">GOVERNADOR ELEITO (VENCEDOR)</label>
+                <select name="gov_es" required class="w-full bg-black border border-emerald-800 rounded p-2 text-xs text-white outline-none focus:border-emerald-400 uppercase">
+                  <option value="">SELECIONE O VENCEDOR (ES)</option>
                   <option value="Breno Barcelos (Missão)">Breno Barcelos (Missão)</option>
                   <option value="Helder Salomão (PT)">Helder Salomão (PT)</option>
                   <option value="Lorenzo Pazolini (Republicanos)">Lorenzo Pazolini (Republicanos)</option>
                   <option value="Rafael Demuner (Unidade Popular - UP)">Rafael Demuner (Unidade Popular - UP)</option>
                   <option value="Ricardo Ferraço (MDB)">Ricardo Ferraço (MDB)</option>
-                </select>
-                <select name="gov_es_2turno" class="w-full bg-black border border-emerald-800 rounded p-1.5 text-xs text-emerald-400 outline-none">
-                  <option value="Com 2º Turno">COM 2º TURNO</option>
-                  <option value="1º Turno Direto">1º TURNO DIRETO</option>
                 </select>
               </div>
 
@@ -316,36 +400,36 @@
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div class="bg-black/40 p-3 rounded border border-emerald-900">
-                <label class="block text-xs text-emerald-500 mb-1">MAIOR BANCADA CÂMARA (PARTIDO) *</label>
+                <label class="block text-xs text-slate-200 mb-1 font-bold">MAIOR BANCADA CÂMARA (PARTIDO) *</label>
                 <input type="text" name="bancada_camara" required placeholder="EX: PL, PT, PSD" class="w-full bg-black border border-emerald-800 rounded p-2 text-white text-xs outline-none uppercase">
               </div>
 
               <div class="bg-black/40 p-3 rounded border border-emerald-900">
-                <label class="block text-xs text-emerald-500 mb-1">MAIOR BANCADA SENADO (PARTIDO) *</label>
+                <label class="block text-xs text-slate-200 mb-1 font-bold">MAIOR BANCADA SENADO (PARTIDO) *</label>
                 <input type="text" name="bancada_senado" required placeholder="EX: PL, PSD, MDB" class="w-full bg-black border border-emerald-800 rounded p-2 text-white text-xs outline-none uppercase">
               </div>
 
               <div class="bg-black/40 p-3 rounded border border-emerald-900">
-                <label class="block text-xs text-emerald-500 mb-1">DEP. FEDERAL MAIS VOTADO (BRASIL) *</label>
+                <label class="block text-xs text-slate-200 mb-1 font-bold">DEP. FEDERAL MAIS VOTADO (BRASIL) *</label>
                 <input type="text" name="dep_fed_br" required placeholder="NOME DO CANDIDATO" class="w-full bg-black border border-emerald-800 rounded p-2 text-white text-xs outline-none uppercase">
               </div>
 
               <div class="bg-black/40 p-3 rounded border border-emerald-900">
                 <div class="flex justify-between items-center mb-1">
-                  <label class="text-xs text-emerald-500">DEP. FEDERAL MAIS VOTADO (PR) *</label>
+                  <label class="text-xs text-slate-200 font-bold">DEP. FEDERAL MAIS VOTADO (PR) *</label>
                   <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Bandeira_do_Paran%C3%A1.svg" alt="PR" class="w-4 h-2.5 rounded">
                 </div>
                 <input type="text" name="dep_fed_pr" required placeholder="NOME DO CANDIDATO" class="w-full bg-black border border-emerald-800 rounded p-2 text-white text-xs outline-none uppercase">
               </div>
 
               <div class="bg-black/40 p-3 rounded border border-emerald-900">
-                <label class="block text-xs text-emerald-500 mb-1">SENADOR MAIS VOTADO (BRASIL) *</label>
+                <label class="block text-xs text-slate-200 mb-1 font-bold">SENADOR MAIS VOTADO (BRASIL) *</label>
                 <input type="text" name="senador_br" required placeholder="NOME DO CANDIDATO" class="w-full bg-black border border-emerald-800 rounded p-2 text-white text-xs outline-none uppercase">
               </div>
 
               <div class="bg-black/40 p-3 rounded border border-emerald-900">
                 <div class="flex justify-between items-center mb-1">
-                  <label class="text-xs text-emerald-500">SENADOR MAIS VOTADO (PR) *</label>
+                  <label class="text-xs text-slate-200 font-bold">SENADOR MAIS VOTADO (PR) *</label>
                   <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Bandeira_do_Paran%C3%A1.svg" alt="PR" class="w-4 h-2.5 rounded">
                 </div>
                 <input type="text" name="senador_pr" required placeholder="NOME DO CANDIDATO" class="w-full bg-black border border-emerald-800 rounded p-2 text-white text-xs outline-none uppercase">
@@ -353,7 +437,7 @@
 
               <div class="bg-black/40 p-3 rounded border border-emerald-900">
                 <div class="flex justify-between items-center mb-1">
-                  <label class="text-xs text-emerald-500">MAIOR BANCADA NA ALEP (PARTIDO) *</label>
+                  <label class="text-xs text-slate-200 font-bold">MAIOR BANCADA NA ALEP (PARTIDO) *</label>
                   <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Bandeira_do_Paran%C3%A1.svg" alt="PR" class="w-4 h-2.5 rounded">
                 </div>
                 <input type="text" name="bancada_alep" required placeholder="EX: PSD, PP, PT" class="w-full bg-black border border-emerald-800 rounded p-2 text-white text-xs outline-none uppercase">
@@ -361,7 +445,7 @@
 
               <div class="bg-black/40 p-3 rounded border border-emerald-900">
                 <div class="flex justify-between items-center mb-1">
-                  <label class="text-xs text-emerald-500">DEP. ESTADUAL MAIS VOTADO (PR) *</label>
+                  <label class="text-xs text-slate-200 font-bold">DEP. ESTADUAL MAIS VOTADO (PR) *</label>
                   <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Bandeira_do_Paran%C3%A1.svg" alt="PR" class="w-4 h-2.5 rounded">
                 </div>
                 <input type="text" name="dep_est_pr" required placeholder="NOME DO CANDIDATO" class="w-full bg-black border border-emerald-800 rounded p-2 text-white text-xs outline-none uppercase">
@@ -374,7 +458,7 @@
             <label class="block text-xs text-amber-400 font-bold uppercase tracking-wider">
               📊 PERGUNTA BÔNUS: CLÁUSULA DE BARREIRA
             </label>
-            <p class="text-xs text-emerald-600">QUANTOS PARTIDOS/FEDERAÇÕES SUPERAM A CLÁUSULA DE BARREIRA NA CÂMARA?</p>
+            <p class="text-xs text-slate-300">QUANTOS PARTIDOS/FEDERAÇÕES SUPERAM A CLÁUSULA DE BARREIRA NA CÂMARA?</p>
             <input type="number" name="clausula_barreira" placeholder="EX: 11" class="w-full sm:w-1/2 bg-black border border-emerald-800 rounded p-2 text-white text-xs outline-none">
           </section>
 
@@ -385,17 +469,19 @@
       <div id="abaRanking" class="hidden space-y-6">
         <div class="border-b border-emerald-900 pb-2 flex justify-between items-center">
           <h2 class="text-lg font-bold text-white uppercase tracking-wider">📊 RANKING E PALPITES REGISTRADOS</h2>
-          <span class="text-xs text-emerald-600">CLIQUE PARA VER O BOLETIM INDIVIDUAL</span>
+          <span class="text-xs text-emerald-400">CLIQUE PARA VER O BOLETIM INDIVIDUAL</span>
         </div>
 
         <div class="overflow-x-auto">
           <table class="w-full text-left text-xs">
             <thead>
-              <tr class="border-b border-emerald-800 text-emerald-500 uppercase">
+              <tr class="border-b border-emerald-800 text-emerald-400 uppercase">
                 <th class="p-3">POS</th>
                 <th class="p-3">PARTICIPANTE</th>
                 <th class="p-3">PRESIDENTE PALPITADO</th>
                 <th class="p-3 text-right">PONTOS</th>
+                <!-- Coluna de Ações visível apenas se admin estiver logado -->
+                <th id="thColunaAcoes" class="p-3 text-center hidden">AÇÕES</th>
               </tr>
             </thead>
             <tbody id="listaRanking">
@@ -409,11 +495,11 @@
       <div id="abaApuracao" class="hidden space-y-6">
         <div class="border-b border-emerald-900 pb-2 flex justify-between items-center">
           <h2 class="text-lg font-bold text-amber-400 uppercase tracking-wider">📈 APURAÇÃO DOS RESULTADOS OFICIAIS</h2>
-          <span class="text-xs text-emerald-600">GABARITO ELEITORAL</span>
+          <span class="text-xs text-emerald-400">GABARITO ZiegBET</span>
         </div>
 
-        <div id="statusApuracao" class="text-xs text-emerald-500 bg-black/40 p-3 rounded border border-emerald-900">
-          Aguardando lançamento oficial do resultado do dia 3...
+        <div id="statusApuracao" class="text-xs text-emerald-300 bg-black/40 p-3 rounded border border-emerald-900">
+          Aguardando lançamento oficial do resultado...
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="quadroGabarito">
@@ -427,14 +513,14 @@
         <!-- Login de Admin -->
         <div id="adminLoginArea" class="max-w-sm mx-auto space-y-4 bg-black/60 p-6 rounded-xl border border-emerald-800 text-center">
           <h3 class="text-lg font-bold text-amber-400 uppercase">Acesso do Administrador</h3>
-          <p class="text-xs text-emerald-600">Insira a senha do Admin para cadastrar os vencedores eleitos no Dia 3.</p>
+          <p class="text-xs text-slate-300">Insira a senha do Admin para cadastrar os vencedores oficiais do Bolão.</p>
           <input type="password" id="adminPassword" placeholder="Senha do Admin" class="w-full bg-black border border-emerald-700 rounded p-2 text-white text-center text-sm outline-none">
           <button onclick="autenticarAdmin()" class="w-full bg-amber-600 hover:bg-amber-500 text-black font-extrabold py-2 rounded text-xs uppercase tracking-wider transition">
             Entrar no Painel
           </button>
         </div>
 
-        <!-- Formulário do Admin (Escondido inicialmente) -->
+        <!-- Formulário do Admin -->
         <div id="adminPainelArea" class="hidden space-y-6">
           <div class="flex justify-between items-center border-b border-amber-500/50 pb-2">
             <h3 class="text-lg font-bold text-amber-400 uppercase">PAINEL DE APURAÇÃO DO ADMIN</h3>
@@ -442,50 +528,248 @@
           </div>
 
           <form id="adminForm" onsubmit="event.preventDefault();" class="space-y-4 text-xs">
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <div>
-                <label class="block text-amber-400 mb-1">PRESIDENTE ELEITO OFICIAL</label>
-                <input type="text" name="pres_vencedor" placeholder="Nome oficial eleito" class="w-full bg-black border border-emerald-800 rounded p-2 text-white uppercase">
-              </div>
-              <div>
-                <label class="block text-amber-400 mb-1">GOVERNADOR SP ELEITO</label>
-                <input type="text" name="gov_sp" placeholder="Nome oficial SP" class="w-full bg-black border border-emerald-800 rounded p-2 text-white uppercase">
-              </div>
-              <div>
-                <label class="block text-amber-400 mb-1">GOVERNADOR PR ELEITO</label>
-                <input type="text" name="gov_pr" placeholder="Nome oficial PR" class="w-full bg-black border border-emerald-800 rounded p-2 text-white uppercase">
-              </div>
-              <div>
-                <label class="block text-amber-400 mb-1">GOVERNADOR SC ELEITO</label>
-                <input type="text" name="gov_sc" placeholder="Nome oficial SC" class="w-full bg-black border border-emerald-800 rounded p-2 text-white uppercase">
-              </div>
-              <div>
-                <label class="block text-amber-400 mb-1">GOVERNADOR RS ELEITO</label>
-                <input type="text" name="gov_rs" placeholder="Nome oficial RS" class="w-full bg-black border border-emerald-800 rounded p-2 text-white uppercase">
-              </div>
-              <div>
-                <label class="block text-amber-400 mb-1">GOVERNADOR RJ ELEITO</label>
-                <input type="text" name="gov_rj" placeholder="Nome oficial RJ" class="w-full bg-black border border-emerald-800 rounded p-2 text-white uppercase">
-              </div>
-              <div>
-                <label class="block text-amber-400 mb-1">GOVERNADOR MG ELEITO</label>
-                <input type="text" name="gov_mg" placeholder="Nome oficial MG" class="w-full bg-black border border-emerald-800 rounded p-2 text-white uppercase">
-              </div>
-              <div>
-                <label class="block text-amber-400 mb-1">GOVERNADOR ES ELEITO</label>
-                <input type="text" name="gov_es" placeholder="Nome oficial ES" class="w-full bg-black border border-emerald-800 rounded p-2 text-white uppercase">
-              </div>
-              <div>
-                <label class="block text-amber-400 mb-1">MAIOR BANCADA CÂMARA</label>
-                <input type="text" name="bancada_camara" placeholder="Sigla do Partido" class="w-full bg-black border border-emerald-800 rounded p-2 text-white uppercase">
-              </div>
-              <div>
-                <label class="block text-amber-400 mb-1">MAIOR BANCADA SENADO</label>
-                <input type="text" name="bancada_senado" placeholder="Sigla do Partido" class="w-full bg-black border border-emerald-800 rounded p-2 text-white uppercase">
+            
+            <!-- 1. Presidente -->
+            <div class="bg-black/40 p-3 rounded border border-amber-500/30 space-y-3">
+              <h4 class="font-bold text-amber-400 uppercase">1. RESULTADO PRESIDENTE</h4>
+              
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-slate-200 mb-1 font-bold">PRESIDENTE ELEITO OFICIAL</label>
+                  <select name="pres_vencedor" class="w-full bg-black border border-emerald-800 rounded p-2 text-white uppercase">
+                    <option value="">SELECIONE O VENCEDOR</option>
+                    <option value="Luiz Inácio Lula da Silva (PT)">Luiz Inácio Lula da Silva (PT)</option>
+                    <option value="Clariana Barão (DC)">Clariana Barão (DC)</option>
+                    <option value="Edmilson Costa (PCB)">Edmilson Costa (PCB)</option>
+                    <option value="Escritor Augusto Cury (Avante)">Escritor Augusto Cury (Avante)</option>
+                    <option value="Flávio Bolsonaro (PL)">Flávio Bolsonaro (PL)</option>
+                    <option value="Hertz Dias (PSTU)">Hertz Dias (PSTU)</option>
+                    <option value="Leonardo Avalanche (PRTB)">Leonardo Avalanche (PRTB)</option>
+                    <option value="Renan Santos (Missão)">Renan Santos (Missão)</option>
+                    <option value="Ronaldo Caiado (PSD)">Ronaldo Caiado (PSD)</option>
+                    <option value="Rui Costa Pimenta (PCO)">Rui Costa Pimenta (PCO)</option>
+                    <option value="Samara Martins (UP)">Samara Martins (UP)</option>
+                    <option value="Veterinário Wilson Grassi (Democrata)">Veterinário Wilson Grassi (Democrata)</option>
+                    <option value="Zema (Novo)">Zema (Novo)</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label class="block text-slate-200 mb-1 font-bold">TEVE 2º TURNO?</label>
+                  <select name="pres_2turno" class="w-full bg-black border border-emerald-800 rounded p-2 text-white uppercase">
+                    <option value="Sim">SIM</option>
+                    <option value="Não">NÃO</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label class="block text-slate-200 mb-1 font-bold">FINALISTA 1 OFICIAL</label>
+                  <select name="pres_finalista1" class="w-full bg-black border border-emerald-800 rounded p-2 text-white uppercase">
+                    <option value="">SELECIONE O 1º FINALISTA</option>
+                    <option value="Luiz Inácio Lula da Silva (PT)">Luiz Inácio Lula da Silva (PT)</option>
+                    <option value="Clariana Barão (DC)">Clariana Barão (DC)</option>
+                    <option value="Edmilson Costa (PCB)">Edmilson Costa (PCB)</option>
+                    <option value="Escritor Augusto Cury (Avante)">Escritor Augusto Cury (Avante)</option>
+                    <option value="Flávio Bolsonaro (PL)">Flávio Bolsonaro (PL)</option>
+                    <option value="Hertz Dias (PSTU)">Hertz Dias (PSTU)</option>
+                    <option value="Leonardo Avalanche (PRTB)">Leonardo Avalanche (PRTB)</option>
+                    <option value="Renan Santos (Missão)">Renan Santos (Missão)</option>
+                    <option value="Ronaldo Caiado (PSD)">Ronaldo Caiado (PSD)</option>
+                    <option value="Rui Costa Pimenta (PCO)">Rui Costa Pimenta (PCO)</option>
+                    <option value="Samara Martins (UP)">Samara Martins (UP)</option>
+                    <option value="Veterinário Wilson Grassi (Democrata)">Veterinário Wilson Grassi (Democrata)</option>
+                    <option value="Zema (Novo)">Zema (Novo)</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label class="block text-slate-200 mb-1 font-bold">FINALISTA 2 OFICIAL</label>
+                  <select name="pres_finalista2" class="w-full bg-black border border-emerald-800 rounded p-2 text-white uppercase">
+                    <option value="">SELECIONE O 2º FINALISTA</option>
+                    <option value="Luiz Inácio Lula da Silva (PT)">Luiz Inácio Lula da Silva (PT)</option>
+                    <option value="Clariana Barão (DC)">Clariana Barão (DC)</option>
+                    <option value="Edmilson Costa (PCB)">Edmilson Costa (PCB)</option>
+                    <option value="Escritor Augusto Cury (Avante)">Escritor Augusto Cury (Avante)</option>
+                    <option value="Flávio Bolsonaro (PL)">Flávio Bolsonaro (PL)</option>
+                    <option value="Hertz Dias (PSTU)">Hertz Dias (PSTU)</option>
+                    <option value="Leonardo Avalanche (PRTB)">Leonardo Avalanche (PRTB)</option>
+                    <option value="Renan Santos (Missão)">Renan Santos (Missão)</option>
+                    <option value="Ronaldo Caiado (PSD)">Ronaldo Caiado (PSD)</option>
+                    <option value="Rui Costa Pimenta (PCO)">Rui Costa Pimenta (PCO)</option>
+                    <option value="Samara Martins (UP)">Samara Martins (UP)</option>
+                    <option value="Veterinário Wilson Grassi (Democrata)">Veterinário Wilson Grassi (Democrata)</option>
+                    <option value="Zema (Novo)">Zema (Novo)</option>
+                  </select>
+                </div>
               </div>
             </div>
 
-            <button type="button" onclick="salvarResultadoOficial()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 rounded text-sm uppercase transition">
+            <!-- 2. Governadores -->
+            <div class="bg-black/40 p-3 rounded border border-amber-500/30 space-y-3">
+              <h4 class="font-bold text-amber-400 uppercase">2. GOVERNADORES ELEITOS</h4>
+              
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-slate-200 mb-1 font-bold">GOVERNADOR SP ELEITO</label>
+                  <select name="gov_sp" class="w-full bg-black border border-emerald-800 rounded p-2 text-white uppercase">
+                    <option value="">SELECIONE ELEITO SP</option>
+                    <option value="Carlos Machado (PCB)">Carlos Machado (PCB)</option>
+                    <option value="Fernando Haddad (PT)">Fernando Haddad (PT)</option>
+                    <option value="Izadora Dias (PCO)">Izadora Dias (PCO)</option>
+                    <option value="Policial Edjane (Agir)">Policial Edjane (Agir)</option>
+                    <option value="Tarcísio de Freitas (Republicanos)">Tarcísio de Freitas (Republicanos)</option>
+                    <option value="Vera Lúcia (PSTU)">Vera Lúcia (PSTU)</option>
+                    <option value="Vivian Mendes (UP)">Vivian Mendes (UP)</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label class="block text-slate-200 mb-1 font-bold">GOVERNADOR PR ELEITO</label>
+                  <select name="gov_pr" class="w-full bg-black border border-emerald-800 rounded p-2 text-white uppercase">
+                    <option value="">SELECIONE ELEITO PR</option>
+                    <option value="Adriano Funileiro (PCO)">Adriano Funileiro (PCO)</option>
+                    <option value="Alexandre Salomão (Mobiliza)">Alexandre Salomão (Mobiliza)</option>
+                    <option value="Luiz França (Missão)">Luiz França (Missão)</option>
+                    <option value="Requião Filho (PDT)">Requião Filho (PDT)</option>
+                    <option value="Samuel de Mattos (PSTU)">Samuel de Mattos (PSTU)</option>
+                    <option value="Sandro Alex (PSD)">Sandro Alex (PSD)</option>
+                    <option value="Sergio Moro (PL)">Sergio Moro (PL)</option>
+                    <option value="Tayná Miessa (UP)">Tayná Miessa (UP)</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label class="block text-slate-200 mb-1 font-bold">GOVERNADOR SC ELEITO</label>
+                  <select name="gov_sc" class="w-full bg-black border border-emerald-800 rounded p-2 text-white uppercase">
+                    <option value="">SELECIONE ELEITO SC</option>
+                    <option value="Bruno Pedreiro do PCO (PCO)">Bruno Pedreiro do PCO (PCO)</option>
+                    <option value="Gelson Merísio (PSB)">Gelson Merísio (PSB)</option>
+                    <option value="João Rodrigues (PSD)">João Rodrigues (PSD)</option>
+                    <option value="Jorginho Mello (PL)">Jorginho Mello (PL)</option>
+                    <option value="Laís Chaud (Unidade Popular)">Laís Chaud (Unidade Popular)</option>
+                    <option value="Marcelo Brigadeiro (MISSÃO)">Marcelo Brigadeiro (MISSÃO)</option>
+                    <option value="Professor Marcus Sodré (PSTU)">Professor Marcus Sodré (PSTU)</option>
+                    <option value="Ralf Zimmer (PRD)">Ralf Zimmer (PRD)</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label class="block text-slate-200 mb-1 font-bold">GOVERNADOR RS ELEITO</label>
+                  <select name="gov_rs" class="w-full bg-black border border-emerald-800 rounded p-2 text-white uppercase">
+                    <option value="">SELECIONE ELEITO RS</option>
+                    <option value="Luciano Zucco (PL)">Luciano Zucco (PL)</option>
+                    <option value="Juliana Brizola (PDT)">Juliana Brizola (PDT)</option>
+                    <option value="Gabriel Souza (MDB)">Gabriel Souza (MDB)</option>
+                    <option value="Marcelo Maranata (PSDB)">Marcelo Maranata (PSDB)</option>
+                    <option value="Priscila Voigt (UP)">Priscila Voigt (UP)</option>
+                    <option value="Cesar Pontes (PCO)">Cesar Pontes (PCO)</option>
+                    <option value="Rejane de Oliveira (PSTU)">Rejane de Oliveira (PSTU)</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label class="block text-slate-200 mb-1 font-bold">GOVERNADOR RJ ELEITO</label>
+                  <select name="gov_rj" class="w-full bg-black border border-emerald-800 rounded p-2 text-white uppercase">
+                    <option value="">SELECIONE ELEITO RJ</option>
+                    <option value="André Marinho (NOVO)">André Marinho (NOVO)</option>
+                    <option value="Coronel Busnello (MISSÃO)">Coronel Busnello (MISSÃO)</option>
+                    <option value="Cyro Garcia (PSTU)">Cyro Garcia (PSTU)</option>
+                    <option value="Douglas Ruas (PL)">Douglas Ruas (PL)</option>
+                    <option value="Eduardo Paes (PSD)">Eduardo Paes (PSD)</option>
+                    <option value="Garotinho (REPUBLICANOS)">Garotinho (REPUBLICANOS)</option>
+                    <option value="Juliete (UP)">Juliete (UP)</option>
+                    <option value="Luan Monteiro (PCO)">Luan Monteiro (PCO)</option>
+                    <option value="William Siri (PSOL)">William Siri (PSOL)</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label class="block text-slate-200 mb-1 font-bold">GOVERNADOR MG ELEITO</label>
+                  <select name="gov_mg" class="w-full bg-black border border-emerald-800 rounded p-2 text-white uppercase">
+                    <option value="">SELECIONE ELEITO MG</option>
+                    <option value="Alexandre Kalil (PDT)">Alexandre Kalil (PDT)</option>
+                    <option value="Ben Mendes (Missão)">Ben Mendes (Missão)</option>
+                    <option value="Cleitinho Azevedo (Republicanos)">Cleitinho Azevedo (Republicanos)</option>
+                    <option value="Flávio Roscoe (PL)">Flávio Roscoe (PL)</option>
+                    <option value="Gabriel Azevedo (MDB)">Gabriel Azevedo (MDB)</option>
+                    <option value="Henrique Áreas (PCO)">Henrique Áreas (PCO)</option>
+                    <option value="Indira Xavier (UP)">Indira Xavier (UP)</option>
+                    <option value="Mateus Simões (PSD)">Mateus Simões (PSD)</option>
+                    <option value="Patrus Ananias (PT)">Patrus Ananias (PT)</option>
+                    <option value="Rafael Duda (PSTU)">Rafael Duda (PSTU)</option>
+                    <option value="Túlio Lopes (PCB)">Túlio Lopes (PCB)</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label class="block text-slate-200 mb-1 font-bold">GOVERNADOR ES ELEITO</label>
+                  <select name="gov_es" class="w-full bg-black border border-emerald-800 rounded p-2 text-white uppercase">
+                    <option value="">SELECIONE ELEITO ES</option>
+                    <option value="Breno Barcelos (Missão)">Breno Barcelos (Missão)</option>
+                    <option value="Helder Salomão (PT)">Helder Salomão (PT)</option>
+                    <option value="Lorenzo Pazolini (Republicanos)">Lorenzo Pazolini (Republicanos)</option>
+                    <option value="Rafael Demuner (Unidade Popular - UP)">Rafael Demuner (Unidade Popular - UP)</option>
+                    <option value="Ricardo Ferraço (MDB)">Ricardo Ferraço (MDB)</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3. Congresso & ALEP -->
+            <div class="bg-black/40 p-3 rounded border border-amber-500/30 space-y-3">
+              <h4 class="font-bold text-amber-400 uppercase">3. CONGRESSO NACIONAL & ALEP</h4>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-slate-200 mb-1 font-bold">MAIOR BANCADA CÂMARA (PARTIDO)</label>
+                  <input type="text" name="bancada_camara" placeholder="EX: PL, PT, PSD" class="w-full bg-black border border-emerald-800 rounded p-2 text-white uppercase">
+                </div>
+
+                <div>
+                  <label class="block text-slate-200 mb-1 font-bold">MAIOR BANCADA SENADO (PARTIDO)</label>
+                  <input type="text" name="bancada_senado" placeholder="EX: PL, PSD, MDB" class="w-full bg-black border border-emerald-800 rounded p-2 text-white uppercase">
+                </div>
+
+                <div>
+                  <label class="block text-slate-200 mb-1 font-bold">DEP. FEDERAL MAIS VOTADO (BRASIL)</label>
+                  <input type="text" name="dep_fed_br" placeholder="NOME DO CANDIDATO" class="w-full bg-black border border-emerald-800 rounded p-2 text-white uppercase">
+                </div>
+
+                <div>
+                  <label class="block text-slate-200 mb-1 font-bold">DEP. FEDERAL MAIS VOTADO (PR)</label>
+                  <input type="text" name="dep_fed_pr" placeholder="NOME DO CANDIDATO" class="w-full bg-black border border-emerald-800 rounded p-2 text-white uppercase">
+                </div>
+
+                <div>
+                  <label class="block text-slate-200 mb-1 font-bold">SENADOR MAIS VOTADO (BRASIL)</label>
+                  <input type="text" name="senador_br" placeholder="NOME DO CANDIDATO" class="w-full bg-black border border-emerald-800 rounded p-2 text-white uppercase">
+                </div>
+
+                <div>
+                  <label class="block text-slate-200 mb-1 font-bold">SENADOR MAIS VOTADO (PR)</label>
+                  <input type="text" name="senador_pr" placeholder="NOME DO CANDIDATO" class="w-full bg-black border border-emerald-800 rounded p-2 text-white uppercase">
+                </div>
+
+                <div>
+                  <label class="block text-slate-200 mb-1 font-bold">MAIOR BANCADA NA ALEP (PARTIDO)</label>
+                  <input type="text" name="bancada_alep" placeholder="EX: PSD, PP, PT" class="w-full bg-black border border-emerald-800 rounded p-2 text-white uppercase">
+                </div>
+
+                <div>
+                  <label class="block text-slate-200 mb-1 font-bold">DEP. ESTADUAL MAIS VOTADO (PR)</label>
+                  <input type="text" name="dep_est_pr" placeholder="NOME DO CANDIDATO" class="w-full bg-black border border-emerald-800 rounded p-2 text-white uppercase">
+                </div>
+              </div>
+            </div>
+
+            <!-- 4. Pergunta Bônus -->
+            <div class="bg-black/40 p-3 rounded border border-amber-500/30 space-y-2">
+              <h4 class="font-bold text-amber-400 uppercase">4. PERGUNTA BÔNUS</h4>
+              <label class="block text-slate-200 mb-1 font-bold">CLÁUSULA DE BARREIRA (Nº PARTIDOS)</label>
+              <input type="number" name="clausula_barreira" placeholder="EX: 11" class="w-full sm:w-1/2 bg-black border border-emerald-800 rounded p-2 text-white uppercase">
+            </div>
+
+            <button type="button" onclick="salvarResultadoOficial()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 rounded text-sm uppercase transition shadow-lg">
               💾 Salvar Resultado Oficial
             </button>
           </form>
@@ -496,7 +780,7 @@
       <!-- TELA DE FIM APÓS VOTAR -->
       <div id="abaFim" class="hidden flex flex-col items-center justify-center py-20 text-center">
         <h1 class="text-7xl sm:text-9xl font-extrabold text-emerald-400 tracking-widest animate-pulse">FIM</h1>
-        <p class="text-sm text-emerald-600 mt-4 uppercase tracking-widest">SEU VOTO FOI GRAVADO COM SUCESSO!</p>
+        <p class="text-sm text-emerald-400 mt-4 uppercase tracking-widest font-bold">SEU PALPITE FOI REGISTADO COM SUCESSO NO ZiegBET!</p>
       </div>
 
     </div>
@@ -505,7 +789,7 @@
     <div id="modalDetalhes" class="hidden fixed inset-0 bg-black/80 flex items-center justify-center p-4 z-50">
       <div class="bg-zinc-900 border-2 border-emerald-700 rounded-xl p-6 max-w-lg w-full max-h-[85vh] overflow-y-auto space-y-4 shadow-2xl">
         <div class="flex justify-between items-center border-b border-zinc-700 pb-2">
-          <h3 class="text-emerald-400 font-urna font-bold text-lg">BOLETIM DE URNA INDIVIDUAL</h3>
+          <h3 class="text-emerald-400 font-urna font-bold text-lg">BOLETIM DE URNA - ZiegBET</h3>
           <button onclick="fecharModal()" class="text-zinc-400 hover:text-white text-xl font-bold">&times;</button>
         </div>
         <div id="modalConteudo" class="space-y-4"></div>
@@ -515,10 +799,10 @@
 
     <!-- TECLADO DA URNA (PAINEL INFERIOR) -->
     <div class="mt-6 pt-4 border-t-2 border-zinc-400">
-      <p class="text-xs font-bold text-zinc-600 text-center mb-3 uppercase tracking-wider">Painel de Comandos do Eleitor</p>
+      <p class="text-xs font-bold text-zinc-700 text-center mb-3 uppercase tracking-wider">Painel de Comandos do Jogador</p>
       
       <div class="grid grid-cols-3 gap-2 sm:gap-4 max-w-lg mx-auto font-sans-ui">
-        <button type="button" onclick="alert('Selecione os campos e preencha seus palpites!')" class="bg-zinc-100 hover:bg-white text-zinc-900 font-bold py-3 sm:py-4 px-2 rounded-lg border-b-4 border-zinc-400 active:border-b-0 active:translate-y-1 transition-all text-xs sm:text-sm uppercase shadow">
+        <button type="button" onclick="alert('Selecione os campos e preencha todos os palpites!')" class="bg-zinc-100 hover:bg-white text-zinc-900 font-bold py-3 sm:py-4 px-2 rounded-lg border-b-4 border-zinc-400 active:border-b-0 active:translate-y-1 transition-all text-xs sm:text-sm uppercase shadow">
           Branco
         </button>
 
@@ -534,7 +818,7 @@
 
   </div>
 
-  <!-- SCRIPT FIREBASE E LÓGICA DA URNA -->
+  <!-- SCRIPT FIREBASE E LÓGICA DO BOLETIM ZiegBET -->
   <script>
     const firebaseConfig = {
       apiKey: "AIzaSyBzTV3st_DOrlxEx6aDM-h4PHdsQuOvQsI",
@@ -552,6 +836,40 @@
 
     let palpitesGlobais = {};
     let resultadoOficialGlobal = null;
+    let isAdminLogado = false; // Estado de controle do Administrador
+
+    function toggle2TurnoPres(tem2Turno) {
+      const box = document.getElementById('boxFinalistasPres');
+      const f1 = document.getElementById('pres_finalista1');
+      const f2 = document.getElementById('pres_finalista2');
+      const lbl = document.getElementById('lblPresVencedor');
+
+      if (tem2Turno === true || tem2Turno === 'Sim') {
+        box.classList.remove('hidden');
+        f1.setAttribute('required', 'required');
+        f2.setAttribute('required', 'required');
+        if(lbl) lbl.innerText = "PRESIDENTE ELEITO NO 2º TURNO (VENCEDOR) *";
+      } else {
+        box.classList.add('hidden');
+        f1.removeAttribute('required');
+        f2.removeAttribute('required');
+        f1.value = "";
+        f2.value = "";
+        if(lbl) lbl.innerText = "PRESIDENTE ELEITO NO 1º TURNO (VENCEDOR) *";
+      }
+    }
+
+    function toggleGov2Turno(estado, valor) {
+      const box = document.getElementById(`boxGov${estado.charAt(0).toUpperCase() + estado.slice(1)}2Turno`);
+      if(!box) return;
+      if (valor === 'Sim') {
+        box.classList.remove('hidden');
+      } else {
+        box.classList.add('hidden');
+        const inputs = box.querySelectorAll('input');
+        inputs.forEach(i => i.value = '');
+      }
+    }
 
     function playUrnaBeep() {
       try {
@@ -587,10 +905,29 @@
           playUrnaBeep();
           exibirFim();
           form.reset();
+          toggle2TurnoPres(false);
         })
         .catch((err) => {
           alert('Erro ao enviar voto: ' + err.message);
         });
+    }
+
+    // Função de Exclusão exclusiva para o Admin
+    function apagarPalpite(key, nome) {
+      if (!isAdminLogado) {
+        alert('Acesso negado.');
+        return;
+      }
+
+      if (confirm(`Tem certeza que deseja apagar o palpite do participante "${nome}"?`)) {
+        db.ref('palpites/' + key).remove()
+          .then(() => {
+            alert('Palpite apagado com sucesso!');
+          })
+          .catch((err) => {
+            alert('Erro ao apagar palpite: ' + err.message);
+          });
+      }
     }
 
     function exibirFim() {
@@ -622,7 +959,7 @@
 
       Object.keys(botoes).forEach(b => {
         const btn = document.getElementById(botoes[b]);
-        if (btn) btn.className = "bg-zinc-800/60 text-zinc-400 py-2 px-3 rounded-lg border border-zinc-700 font-bold hover:bg-zinc-700 transition";
+        if (btn) btn.className = "bg-zinc-800/60 text-zinc-300 py-2 px-3 rounded-lg border border-zinc-700 font-bold hover:bg-zinc-700 transition";
       });
 
       if (aba === 'votar') {
@@ -655,10 +992,17 @@
     function calcularPontos(item) {
       if (!resultadoOficialGlobal) return 0;
       let pontos = 0;
-      const campos = ['pres_vencedor', 'gov_sp', 'gov_pr', 'gov_sc', 'gov_rs', 'gov_rj', 'gov_mg', 'gov_es', 'bancada_camara', 'bancada_senado'];
       
-      campos.forEach(campo => {
-        if (item[campo] && resultadoOficialGlobal[campo] && item[campo].trim().toLowerCase() === resultadoOficialGlobal[campo].trim().toLowerCase()) {
+      const camposAvaliados = [
+        'pres_vencedor', 'pres_2turno', 'pres_finalista1', 'pres_finalista2',
+        'gov_sp', 'gov_pr', 'gov_sc', 'gov_rs', 'gov_rj', 'gov_mg', 'gov_es',
+        'bancada_camara', 'bancada_senado', 'dep_fed_br', 'dep_fed_pr',
+        'senador_br', 'senador_pr', 'bancada_alep', 'dep_est_pr', 'clausula_barreira'
+      ];
+      
+      camposAvaliados.forEach(campo => {
+        if (item[campo] && resultadoOficialGlobal[campo] && 
+            item[campo].toString().trim().toLowerCase() === resultadoOficialGlobal[campo].toString().trim().toLowerCase()) {
           pontos += 1;
         }
       });
@@ -672,28 +1016,50 @@
 
     function renderizarListaRanking() {
       const lista = document.getElementById('listaRanking');
+      const thAcoes = document.getElementById('thColunaAcoes');
       lista.innerHTML = '';
+      
+      // Controla a visibilidade da coluna de ações de acordo com o Admin logado
+      if (isAdminLogado) {
+        if(thAcoes) thAcoes.classList.remove('hidden');
+      } else {
+        if(thAcoes) thAcoes.classList.add('hidden');
+      }
+
       const keys = Object.keys(palpitesGlobais);
 
       if (keys.length === 0) {
-        lista.innerHTML = '<tr class="border-b border-emerald-900/50"><td colspan="4" class="p-4 text-center text-emerald-600 font-urna">Nenhum palpite registrado ainda. Seja o primeiro a votar!</td></tr>';
+        const colSpan = isAdminLogado ? 5 : 4;
+        lista.innerHTML = `<tr class="border-b border-emerald-900/50"><td colspan="${colSpan}" class="p-4 text-center text-emerald-400 font-urna font-bold">Nenhum palpite registado ainda. Seja o primeiro a apostar no ZiegBET!</td></tr>`;
         return;
       }
 
-      // Ordena por pontuação (se houver apuração) ou por ordem
       const listaOrdenada = keys.map(k => ({ key: k, ...palpitesGlobais[k], pontos: calcularPontos(palpitesGlobais[k]) }));
       listaOrdenada.sort((a, b) => b.pontos - a.pontos);
 
       listaOrdenada.forEach((item, index) => {
         const tr = document.createElement('tr');
-        tr.className = "border-b border-emerald-900/40 hover:bg-emerald-900/20 cursor-pointer transition-colors font-urna";
-        tr.onclick = () => verDetalhes(item.key);
-        tr.innerHTML = `
-          <td class="p-3 font-bold text-amber-400">#${index + 1}</td>
-          <td class="p-3 font-bold text-white uppercase">${item.nome_participante || 'Anônimo'}</td>
-          <td class="p-3 text-emerald-400 uppercase font-bold">${item.pres_vencedor || '-'}</td>
-          <td class="p-3 text-right font-bold text-amber-400">${resultadoOficialGlobal ? item.pontos + ' pts' : '-'}</td>
+        tr.className = "border-b border-emerald-900/40 hover:bg-emerald-900/20 transition-colors font-urna";
+        
+        let htmlConteudo = `
+          <td class="p-3 font-bold text-amber-400 cursor-pointer" onclick="verDetalhes('${item.key}')">#${index + 1}</td>
+          <td class="p-3 font-bold text-white uppercase cursor-pointer" onclick="verDetalhes('${item.key}')">${item.nome_participante || 'Anónimo'}</td>
+          <td class="p-3 text-emerald-400 uppercase font-bold cursor-pointer" onclick="verDetalhes('${item.key}')">${item.pres_vencedor || '-'}</td>
+          <td class="p-3 text-right font-bold text-amber-400 cursor-pointer" onclick="verDetalhes('${item.key}')">${resultadoOficialGlobal ? item.pontos + ' pts' : '-'}</td>
         `;
+
+        // Insere o botão de lixeira apenas se o admin estiver logado
+        if (isAdminLogado) {
+          htmlConteudo += `
+            <td class="p-3 text-center">
+              <button onclick="event.stopPropagation(); apagarPalpite('${item.key}', '${item.nome_participante || 'Anónimo'}')" class="bg-red-600 hover:bg-red-500 text-white p-1.5 rounded transition shadow" title="Apagar Palpite">
+                🗑️
+              </button>
+            </td>
+          `;
+        }
+
+        tr.innerHTML = htmlConteudo;
         lista.appendChild(tr);
       });
     }
@@ -703,7 +1069,7 @@
       const status = document.getElementById('statusApuracao');
 
       if (!resultadoOficialGlobal) {
-        status.innerHTML = '⚠️ A apuração oficial estará disponível assim que o resultado for publicado pelo administrador.';
+        status.innerHTML = '⚠️ A apuração oficial estará disponível assim que os resultados forem publicados pelo Administrador.';
         quadro.innerHTML = '';
         return;
       }
@@ -713,6 +1079,9 @@
 
       const labels = {
         pres_vencedor: 'Presidente Eleito',
+        pres_2turno: 'Teve 2º Turno (Pres)',
+        pres_finalista1: 'Finalista 1 Presidência',
+        pres_finalista2: 'Finalista 2 Presidência',
         gov_sp: 'Gov. São Paulo',
         gov_pr: 'Gov. Paraná',
         gov_sc: 'Gov. Santa Catarina',
@@ -721,17 +1090,26 @@
         gov_mg: 'Gov. Minas Gerais',
         gov_es: 'Gov. Espírito Santo',
         bancada_camara: 'Maior Bancada Câmara',
-        bancada_senado: 'Maior Bancada Senado'
+        bancada_senado: 'Maior Bancada Senado',
+        dep_fed_br: 'Dep. Federal BR Mais Votado',
+        dep_fed_pr: 'Dep. Federal PR Mais Votado',
+        senador_br: 'Senador BR Mais Votado',
+        senador_pr: 'Senador PR Mais Votado',
+        bancada_alep: 'Maior Bancada ALEP',
+        dep_est_pr: 'Dep. Estadual PR Mais Votado',
+        clausula_barreira: 'Cláusula de Barreira'
       };
 
       Object.keys(labels).forEach(key => {
-        const div = document.createElement('div');
-        div.className = "bg-black/60 p-3 rounded border border-emerald-800 flex justify-between items-center text-xs";
-        div.innerHTML = `
-          <span class="text-emerald-500 uppercase">${labels[key]}</span>
-          <span class="text-amber-400 font-bold uppercase">${resultadoOficialGlobal[key] || 'Pendente'}</span>
-        `;
-        quadro.appendChild(div);
+        if (resultadoOficialGlobal[key]) {
+          const div = document.createElement('div');
+          div.className = "bg-black/60 p-3 rounded border border-emerald-800 flex justify-between items-center text-xs";
+          div.innerHTML = `
+            <span class="text-emerald-400 uppercase font-bold">${labels[key]}</span>
+            <span class="text-amber-400 font-bold uppercase">${resultadoOficialGlobal[key]}</span>
+          `;
+          quadro.appendChild(div);
+        }
       });
     }
 
@@ -743,29 +1121,32 @@
       const modalContent = document.getElementById('modalConteudo');
       modalContent.innerHTML = `
         <div class="space-y-3 font-urna text-xs">
-          <p class="border-b border-emerald-800 pb-1 text-base text-amber-400 font-bold uppercase">${item.nome_participante || 'ANÔNIMO'}</p>
+          <p class="border-b border-emerald-800 pb-1 text-base text-amber-400 font-bold uppercase">${item.nome_participante || 'ANÓNIMO'}</p>
           
           <div class="bg-black/50 p-3 rounded border border-emerald-900 space-y-1">
-            <span class="text-emerald-500 font-bold block text-sm">1. PRESIDENTE DA REPÚBLICA:</span>
+            <span class="text-emerald-400 font-bold block text-sm">1. PRESIDENTE DA REPÚBLICA:</span>
             <p>2º Turno: <span class="text-white">${item.pres_2turno || '-'}</span></p>
-            <p>Finalistas: <span class="text-white">${item.pres_finalistas || '-'}</span></p>
+            ${item.pres_2turno === 'Sim' ? `
+              <p>Finalista 1: <span class="text-white">${item.pres_finalista1 || '-'}</span></p>
+              <p>Finalista 2: <span class="text-white">${item.pres_finalista2 || '-'}</span></p>
+            ` : ''}
             <p>Vencedor: <span class="text-white font-bold">${item.pres_vencedor || '-'}</span></p>
             <p>% Votos Vencedor: <span class="text-white">${item.pres_pct || '-'}</span></p>
           </div>
 
           <div class="bg-black/50 p-3 rounded border border-emerald-900 space-y-1">
-            <span class="text-emerald-500 font-bold block text-sm">2. GOVERNADORES DE ESTADO:</span>
-            <p>SP: <span class="text-white">${item.gov_sp || '-'}</span> (${item.gov_sp_2turno})</p>
-            <p>PR: <span class="text-white">${item.gov_pr || '-'}</span> (${item.gov_pr_2turno})</p>
-            <p>SC: <span class="text-white">${item.gov_sc || '-'}</span> (${item.gov_sc_2turno})</p>
-            <p>RS: <span class="text-white">${item.gov_rs || '-'}</span> (${item.gov_rs_2turno})</p>
-            <p>RJ: <span class="text-white">${item.gov_rj || '-'}</span> (${item.gov_rj_2turno})</p>
-            <p>MG: <span class="text-white">${item.gov_mg || '-'}</span> (${item.gov_mg_2turno})</p>
-            <p>ES: <span class="text-white">${item.gov_es || '-'}</span> (${item.gov_es_2turno})</p>
+            <span class="text-emerald-400 font-bold block text-sm">2. GOVERNADORES DE ESTADO:</span>
+            <p>SP: <span class="text-white">${item.gov_sp || '-'}</span> (2º Turno: ${item.gov_sp_2turno || 'Sim'})</p>
+            <p>PR: <span class="text-white">${item.gov_pr || '-'}</span> (2º Turno: ${item.gov_pr_2turno || 'Sim'})</p>
+            <p>SC: <span class="text-white">${item.gov_sc || '-'}</span> (2º Turno: ${item.gov_sc_2turno || 'Sim'})</p>
+            <p>RS: <span class="text-white">${item.gov_rs || '-'}</span> (2º Turno: ${item.gov_rs_2turno || 'Sim'})</p>
+            <p>RJ: <span class="text-white">${item.gov_rj || '-'}</span> (2º Turno: ${item.gov_rj_2turno || 'Sim'})</p>
+            <p>MG: <span class="text-white">${item.gov_mg || '-'}</span> (2º Turno: ${item.gov_mg_2turno || 'Sim'})</p>
+            <p>ES: <span class="text-white">${item.gov_es || '-'}</span> (2º Turno: ${item.gov_es_2turno || 'Sim'})</p>
           </div>
 
           <div class="bg-black/50 p-3 rounded border border-emerald-900 space-y-1">
-            <span class="text-emerald-500 font-bold block text-sm">3. CONGRESSO & ALEP:</span>
+            <span class="text-emerald-400 font-bold block text-sm">3. CONGRESSO & ALEP:</span>
             <p>Maior Bancada Câmara: <span class="text-white">${item.bancada_camara || '-'}</span></p>
             <p>Maior Bancada Senado: <span class="text-white">${item.bancada_senado || '-'}</span></p>
             <p>Dep. Federal (BR): <span class="text-white">${item.dep_fed_br || '-'}</span></p>
@@ -794,17 +1175,22 @@
     function autenticarAdmin() {
       const pass = document.getElementById('adminPassword').value;
       if (pass === 'admin123') {
+        isAdminLogado = true;
         document.getElementById('adminLoginArea').classList.add('hidden');
         document.getElementById('adminPainelArea').classList.remove('hidden');
+        renderizarListaRanking(); // Atualiza a tabela do ranking para mostrar o botão de exclusão
+        alert('Administrador autenticado com sucesso!');
       } else {
         alert('Senha incorreta!');
       }
     }
 
     function deslogarAdmin() {
+      isAdminLogado = false;
       document.getElementById('adminLoginArea').classList.remove('hidden');
       document.getElementById('adminPainelArea').classList.add('hidden');
       document.getElementById('adminPassword').value = '';
+      renderizarListaRanking(); // Oculta o botão de exclusão da tabela
     }
 
     function salvarResultadoOficial() {
